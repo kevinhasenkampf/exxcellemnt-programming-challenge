@@ -8,9 +8,9 @@ import java.util.Map;
 public class DataExtractionResult {
 
     private final List<Map<String, Object>> data;
-    protected final String source;
-    protected final LocalDateTime extractedAt;
-    protected final String dataType;
+    private String source;
+    private final LocalDateTime extractedAt;
+    private String dataType;
 
 
     public DataExtractionResult(List<Map<String, Object>> data, String source, String dataType) {
@@ -19,8 +19,13 @@ public class DataExtractionResult {
         this.extractedAt = LocalDateTime.now();
         this.dataType = dataType;
     }
+    public DataExtractionResult(List<Map<String, Object>> data) {
+        this.data = data;
+        this.extractedAt = LocalDateTime.now();
+    }
 
-    // Common behavior
+
+
     public List<Map<String, Object>> getData() { return data; }
     public int getRecordCount() { return data.size(); }
     public boolean isEmpty() { return data.isEmpty(); }
