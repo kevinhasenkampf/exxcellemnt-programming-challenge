@@ -40,9 +40,20 @@ public final class App {
         System.out.printf("Day with smallest temperature spread : %s%n", fetchStrategyResult.getBestKey());
 
 
+        // Lese die Daten aus der CSV Datei ein
+        DataExtractionService dataExtractionServiceTeam = new DataExtractionService();
+        DataExtractionResult dataExtractionResultTeam =  dataExtractionServiceTeam.readInDataFromFile("src/main/resources/de/exxcellent/challenge/football.csv");
+
+        // Erstelle eine FetchStrategie
+        FetchStrategyInterface fetchStrategyInterfaceTeam = new FetchStrategyMinSpreadImplementation();
+        AnalysisService analysisServiceTeam = new AnalysisService(fetchStrategyInterfaceTeam);
+        FetchComparisonRequest fetchComparisonRequestTeam = new FetchComparisonRequest("Team", "Goals", "Goals Allowed");
+
+        // Führe den Request auf die Daten aus
+        FetchStrategyResult fetchStrategyResultTeam = analysisServiceTeam.analyze(dataExtractionResultTeam, fetchComparisonRequestTeam);
 
 
         String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
-        System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
+        System.out.printf("Team with smallest goal spread       : %s%n", fetchStrategyResultTeam.getBestKey());
     }
 }
