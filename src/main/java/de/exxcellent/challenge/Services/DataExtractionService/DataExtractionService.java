@@ -9,7 +9,7 @@ import java.io.Reader;
 
 public class DataExtractionService {
 
-    private DataExtractionFactory dataExtractionFactory;
+    private final DataExtractionFactory dataExtractionFactory;
 
     public DataExtractionService() {
         this.dataExtractionFactory = new DataExtractionFactory();
