@@ -11,9 +11,4 @@ public class WeatherDataExtractionResult extends DataExtractionResult{
     protected WeatherDataExtractionResult(List<Map<String, Object>> data, String source) {
         super(data, source, "WEATHER");
     }
-
-    @Override
-    public ValidationResult validate() {
-        return new ValidationResult(true, "all good");
-    }
 }

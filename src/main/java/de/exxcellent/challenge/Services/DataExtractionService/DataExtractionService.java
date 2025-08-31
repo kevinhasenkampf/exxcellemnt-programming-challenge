@@ -2,11 +2,22 @@ package de.exxcellent.challenge.Services.DataExtractionService;
 
 import de.exxcellent.challenge.data.DataExtractionResult;
 
+import java.util.Date;
+
 public class DataExtractionService {
 
-    public DataExtractionService() {}
+    private DataExtractionFactory dataExtractionFactory;
 
-    public DataExtractionResult readInDataFromFile(){
-        return null;
+    public DataExtractionService() {
+        this.dataExtractionFactory = new DataExtractionFactory();
+    }
+
+    public DataExtractionResult readInDataFromFile(String filePath){
+
+        DataExtractionInterface dataExtractionInterfaceImplementation =  this.dataExtractionFactory.getDataExtractionInterface(filePath);
+
+        DataExtractionResult dataExtractionResult = dataExtractionInterfaceImplementation.extractData(filePath);
+
+        return dataExtractionResult;
     }
 }
