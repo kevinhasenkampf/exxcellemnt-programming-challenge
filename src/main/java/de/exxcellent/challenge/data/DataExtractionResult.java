@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-// Abstract  Class that defines how Extracted Data should Look like
+// Class that defines how Extracted Data should Look like
 public class DataExtractionResult {
 
     private final List<Map<String, Object>> data;
